@@ -24,7 +24,9 @@ function __autoload($className) {
 define('ROOT_PATH', dirname(__FILE__));
 
 // 换成应用自己的appId、appSecret
-$wsq = new WSQ('wsq09fd1510690413', '8f92091ad07bb0c7aaa954d88f3ea548', $_GET['code']);
+$appId = 'xxxxx';
+$appSecret = 'xxxxxxxxx'
+$wsq = new WSQ($appId, $appSecret, $_GET['code']);
 try {
     // 获取站点信息
     // var_dump($wsq->getSiteInfo($_GET['sId']));
