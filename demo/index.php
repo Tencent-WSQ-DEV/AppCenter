@@ -24,8 +24,6 @@ function __autoload($className) {
 define('ROOT_PATH', dirname(__FILE__));
 
 // 换成应用自己的appId、appSecret
-$appId = 'xxxxx';
-$appSecret = 'xxxxxxxxx'
 $wsq = new WSQ($appId, $appSecret, $_GET['code']);
 try {
     // 获取站点信息
@@ -35,19 +33,19 @@ try {
     // var_dump($wsq->getThreadList($_GET['sId']));
 
     // 上传图片
-    var_dump($pic = $wsq->uploadPic($_GET['sId'], '/tmp/46709-106.jpg'));
+    // var_dump($pic = $wsq->uploadPic($_GET['sId'], '/tmp/46709-106.jpg'));
 
     // 发表主题
-    var_dump($thread = $wsq->newThread($_GET['sId'], '我是从demo发表的主题', array($pic['picId'])));
+    // var_dump($thread = $wsq->newThread($_GET['sId'], '我是从demo发表的主题', array($pic['picId'])));
 
     // 获取主题
     // var_dump($thread = $wsq->getThread($_GET['sId'], $thread['tId']));
 
     // 发表回复
-    var_dump($reply = $wsq->newReply($_GET['sId'], $thread['tId'], '我是从demo发表的回复'));
+    // var_dump($reply = $wsq->newReply($_GET['sId'], $thread['tId'], '我是从demo发表的回复'));
 
     // 获取主题+回复
-    var_dump($thread = $wsq->getThread($_GET['sId'], $thread['tId'], true));
+    // var_dump($thread = $wsq->getThread($_GET['sId'], $thread['tId'], true));
 
     // 获取用户信息
     // var_dump($wsq->getUserInfo());
@@ -75,6 +73,8 @@ try {
     <script src="http://dzqun.gtimg.cn/openapp/scripts/interface.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+hello world!
+<br />
 <br />
 <input type="button" value="改变高度" onclick="wsqOpenApp.resizeFrame({h:1000});">
 <br />

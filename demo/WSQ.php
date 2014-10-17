@@ -1,21 +1,9 @@
 <?php
-/**
- * WSQ
- *
- * 作    者:何林丹(danvinhe@tencent.com)
- * 创建时间:2014-10-14 10:20:29
- * 修改记录:
- *  @errorCode []
- *
- * $Id$
- */
-
 class WSQ {
-
     /**
      * api 域名
      */
-    public $apiHost = 'http://openapi.wsq.qq.com';
+    public $apiHost = 'http://dev02.openapi.wsq.qq.com';
 
     /**
      * appId
@@ -31,6 +19,11 @@ class WSQ {
      * code
      */
     protected $code = '';
+
+    /**
+     * accessToken
+     */
+    protected $accessToken = '';
 
     /**
      * noNeedAppToken
@@ -172,30 +165,15 @@ class WSQ {
      */
     public function getAccessToken() {
 
-        $now = time();
-
-        // 本地文件缓存
-        $logFile = '/tmp/wsq_access_token.log';
-        if (!file_exists($logFile)) {
-            touch($logFile);
-        }
-
-        $content = file_get_contents($logFile);
-        list($time, $token) = explode('|', $content);
-        if ($time > time() && $token) {
-            $data = array(
-                'accessToken' => $token
-            );
-        } else {
+        if (!$this->accessToken) {
             $getData = array(
                 'code' => $this->code
             );
             $data = $this->_request('/v1/user/auth', $getData);
-            $content = sprintf('%d|%s', time() + $data['expires'], $data['accessToken']);
-            file_put_contents($logFile, $content);
+            $this->accessToken = $data['accessToken'];
         }
 
-        return $data['accessToken'];
+        return $this->accessToken;
     }
 
     /**

@@ -1,15 +1,4 @@
 <?php
-/**
- * HTTP_Request
- *
- * 作    者:何林丹(danvinhe@tencent.com)
- * 创建时间:2014-10-14 11:39:45
- * 修改记录:
- *  @errorCode []
- *
- * $Id$
- */
-
 class HTTP_Request {
 
     const METHOD_OPTIONS = 'OPTIONS';
