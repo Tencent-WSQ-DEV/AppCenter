@@ -3,7 +3,7 @@ class WSQ {
     /**
      * api 域名
      */
-    public $apiHost = 'http://dev02.openapi.wsq.qq.com';
+    public $apiHost = 'https://openapi.wsq.qq.com';
 
     /**
      * appId
